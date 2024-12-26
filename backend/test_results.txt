@@ -69,3 +69,28 @@ Ran all test suites.
 
 ===========================================================================================================================
 
+ FAIL  ./bookRoutes.test.js (5.716 s)
+  Book Routes
+    × should mark a book as returned (5012 ms)                                                                                    
+                                                                                                                                  
+  ● Book Routes › should mark a book as returned
+Test Suites: 1 failed, 1 total                                                                                                    
+Tests:       1 failed, 1 total                                                                                                    
+Snapshots:   0 total
+Time:        5.8 s
+Ran all test suites.
+
+===========================================================================================================================
+
+ PASS  ./bookRoutes.test.js
+  Book Routes
+    √ should mark a book as returned (242 ms)                                                                                     
+                                                                                                                                  
+Test Suites: 1 passed, 1 total                                                                                                    
+Tests:       1 passed, 1 total                                                                                                    
+Snapshots:   0 total
+Time:        1.025 s, estimated 6 s
+Ran all test suites.
+
+===================================================================================================================================
+

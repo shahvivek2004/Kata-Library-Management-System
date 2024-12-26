@@ -76,6 +76,7 @@ app.put('/borrow/:id', async (req, res) => {
 
     try {
 
+
         const response = await db.query(
             'UPDATE book SET is_borrowed = $1 WHERE isbn = $2 RETURNING *',
             [true, bookId]
@@ -98,15 +99,27 @@ app.put('/borrow/:id', async (req, res) => {
 
 //-----------------------RETURN FEATURE-------------------------
 
-app.put('/return/:id', (req, res) => {
+app.put('/return/:id', async (req, res) => {
+    const bookId = req.params.id;
 
     try {
+        const response = await db.query(
+            'UPDATE book SET is_borrowed = $1 WHERE isbn = $2 RETURNING *',
+            [false, bookId]
+        );
+
+        if (response.rows.length === 0) {
+            return res.status(404).send('Book not found');
+        }
+
+        res.status(200).json({ data: response.rows[0] });
 
     } catch (error) {
-
+        console.error('Error updating book status:', error);
+        res.status(500).send('Internal Server Error');
     }
-
 });
+
 
 
 export default app;
