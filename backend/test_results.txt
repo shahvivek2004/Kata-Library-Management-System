@@ -1,0 +1,16 @@
+ NODE_OPTIONS=--experimental-vm-modules npm test --detectOpenHandles
+
+> backend@1.0.0 test
+> jest
+
+(node:10532) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  ./bookRoutes.test.js
+  Book Routes
+    √ should add a book (281 ms)                                                                                                  
+                                                                                                                                  
+Test Suites: 1 passed, 1 total                                                                                                    
+Tests:       1 passed, 1 total                                                                                                    
+Snapshots:   0 total
+Time:        0.949 s, estimated 1 s
+Ran all test suites.
