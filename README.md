@@ -1,5 +1,5 @@
 # Library Management System
-A full-stack library management application built with PostgreSQL, Express, React, and Node.js (PERN stack) and also using Test Driven Development(TDD) concept to test given functionalities of given webapp, first writing test on given functionality and then accordingly create code such that that code  pass all tests
+A full-stack library management application built with PostgreSQL, Express, React, and Node.js (PERN stack) and This project includes test-driven development (TDD) with Jest and Supertest to ensure robust and reliable functionality.
 
 ## Features
 
@@ -45,10 +45,14 @@ psql -U postgres -d library_management -f schema.sql
 cd server
 npm init
 npm install
+npm install express pg dotenv cors
+npm install --save-dev jest supertest nodemon
+
 
 # Frontend dependencies
 cd ../client
 npm install
+npm install axios
 ```
 
 5. Configure environment variables
@@ -91,13 +95,8 @@ The application will be available at `http://localhost:3000`
 
 ## Testing
 ```bash
-# Run backend tests
 cd server
-npm test
-
-# Run frontend tests
-cd client
-npm test
+NODE_OPTIONS=--experimental-vm-modules npm test
 ```
 
 ## Project Structure
