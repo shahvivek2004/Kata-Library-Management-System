@@ -1,13 +1,24 @@
+//--------------------IMPORT NECESSARY MODULES-----------------
+
 import express from "express";
 import cors from "cors";
 import dotenv from 'dotenv';
 import pg from "pg";
+
+
+
+//--------------------SERVER CONFIGURATION--------------------
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+
+
+
+//--------------------DATABASE CONFIGURATION------------------
 
 const db = new pg.Client({
     user: process.env.DB_USER,
@@ -18,6 +29,11 @@ const db = new pg.Client({
 });
 
 db.connect();
+
+
+
+
+//--------------------DISPLAY FEATURE--------------------------
 
 app.get('/show', async (req, res) => {
 
@@ -33,6 +49,11 @@ app.get('/show', async (req, res) => {
 
 });
 
+
+
+
+//-------------------ADD FEATURE----------------------------
+
 app.post('/add', async (req, res) => {
     const title = req.body.title;
     const author = req.body.author;
@@ -47,16 +68,35 @@ app.post('/add', async (req, res) => {
 });
 
 
-app.put('/borrow/:id', (req, res) => {
+
+//--------------------BORROW FEATURE--------------------------
+
+app.put('/borrow/:id', async (req, res) => {
+    const bookId = req.params.id;
 
     try {
 
+        const response = await db.query(
+            'UPDATE book SET is_borrowed = $1 WHERE isbn = $2 RETURNING *',
+            [true, bookId]
+        );
+
+        if (response.rows.length === 0) {
+            return res.status(404).send('Book not found');
+        }
+
+        res.status(200).json({ data: response.rows[0] });
 
     } catch (error) {
-
+        console.error('Error updating book status:', error);
+        res.status(500).send('Internal Server Error');
     }
-
 });
+
+
+
+
+//-----------------------RETURN FEATURE-------------------------
 
 app.put('/return/:id', (req, res) => {
 

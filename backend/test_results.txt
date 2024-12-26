@@ -18,20 +18,6 @@ Ran all test suites.
                                                                                                                                   
   ● Book Routes › should return list of all books                                                                                 
                                                                                                                                   
-    thrown: "Exceeded timeout of 5000 ms for a test.
-    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
-
-      16 |     });
-      17 |
-    > 18 |     test('should return list of all books',async()=>{
-         |     ^
-      19 |         const res=await request(app).get("/show");
-      20 |         expect(res.statusCode).toEqual(200);
-      21 |     })
-
-      at test (bookRoutes.test.js:18:5)
-      at describe (bookRoutes.test.js:6:1)
-
 Test Suites: 1 failed, 1 total                                                                                                    
 Tests:       1 failed, 1 passed, 2 total                                                                                          
 Snapshots:   0 total
@@ -54,3 +40,20 @@ Ran all test suites.
 
 
 ================================================================================================================================
+ 
+ FAIL  ./bookRoutes.test.js (5.953 s)
+  Book Routes
+    √ should add a book (240 ms)                                                                                                  
+    √ should return list of all books (21 ms)                                                                                     
+    × book should be borrowed if available (5008 ms)                                                                              
+                                                                                                                                  
+  ● Book Routes › book should be borrowed if available    
+
+Test Suites: 1 failed, 1 total                                                                                                    
+Tests:       1 failed, 2 passed, 3 total                                                                                          
+Snapshots:   0 total
+Time:        6.017 s
+Ran all test suites.
+
+================================================================================================================================
+
