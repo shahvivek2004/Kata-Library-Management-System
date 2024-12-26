@@ -21,15 +21,15 @@ db.connect();
 
 app.get('/show', async (req, res) => {
 
-    // try {
+    try {
 
-    //     const response = (await db.query('SELECT *FROM book')).rows;
-    //     res.json({ data: response });
-    //     res.sendStatus(200);
+        const response = await db.query('SELECT *FROM book');
+        console.log(response.rows[0]);
+        res.json({ data: response.rows });
+    } catch (error) {
+        res.sendStatus(404);
 
-    // } catch (error) {
-
-    // }
+    }
 
 });
 

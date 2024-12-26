@@ -15,4 +15,10 @@ describe("Book Routes", () => {
         expect(res.statusCode).toEqual(201);
     });
 
+    test('should return list of all books', async () => {
+        const res = await request(app).get("/show");
+        expect(res.statusCode).toEqual(200);
+        expect(res.body.data).toBeDefined();  
+    })
+
 })

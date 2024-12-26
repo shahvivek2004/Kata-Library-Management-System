@@ -1,10 +1,3 @@
- NODE_OPTIONS=--experimental-vm-modules npm test --detectOpenHandles
-
-> backend@1.0.0 test
-> jest
-
-(node:10532) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
  PASS  ./bookRoutes.test.js
   Book Routes
     √ should add a book (281 ms)                                                                                                  
@@ -18,3 +11,46 @@ Ran all test suites.
 ==============================================================================================================================
 
 
+ FAIL  ./bookRoutes.test.js (6.101 s)
+  Book Routes
+    √ should add a book (268 ms)                                                                                                  
+    × should return list of all books (5010 ms)
+                                                                                                                                  
+  ● Book Routes › should return list of all books                                                                                 
+                                                                                                                                  
+    thrown: "Exceeded timeout of 5000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      16 |     });
+      17 |
+    > 18 |     test('should return list of all books',async()=>{
+         |     ^
+      19 |         const res=await request(app).get("/show");
+      20 |         expect(res.statusCode).toEqual(200);
+      21 |     })
+
+      at test (bookRoutes.test.js:18:5)
+      at describe (bookRoutes.test.js:6:1)
+
+Test Suites: 1 failed, 1 total                                                                                                    
+Tests:       1 failed, 1 passed, 2 total                                                                                          
+Snapshots:   0 total
+Time:        6.171 s
+Ran all test suites.
+
+============================================================================================================================
+
+ PASS  ./bookRoutes.test.js
+  Book Routes
+    √ should add a book (233 ms)                                                                                                  
+    √ should return list of all books (21 ms)                                                                                     
+                                                                                                                                  
+Test Suites: 1 passed, 1 total                                                                                                    
+Tests:       2 passed, 2 total                                                                                                    
+Snapshots:   0 total
+Time:        0.98 s, estimated 1 s
+Ran all test suites.
+
+
+
+================================================================================================================================
