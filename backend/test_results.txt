@@ -57,3 +57,15 @@ Ran all test suites.
 
 ================================================================================================================================
 
+ PASS  ./bookRoutes.test.js
+  Book Routes
+    √ book should be borrowed if available (231 ms)                                                                               
+                                                                                                                                  
+Test Suites: 1 passed, 1 total                                                                                                    
+Tests:       1 passed, 1 total                                                                                                    
+Snapshots:   0 total
+Time:        1.009 s, estimated 2 s
+Ran all test suites.
+
+===========================================================================================================================
+

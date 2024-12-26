@@ -15,16 +15,23 @@ describe("Book Routes", () => {
     //     expect(res.statusCode).toEqual(201);
     // });
 
-    // test('should return list of all books', async () => {
-    //     const res = await request(app).get("/show");
+    // // test('should return list of all books', async () => {
+    // //     const res = await request(app).get("/show");
+    // //     expect(res.statusCode).toEqual(200);
+    // //     expect(res.body.data).toBeDefined();  
+    // // })
+
+    // test('book should be borrowed if available',async()=>{
+    //     const res = await request(app).put('/borrow/9'); // Assuming book ID 1
     //     expect(res.statusCode).toEqual(200);
-    //     expect(res.body.data).toBeDefined();  
+    //     expect(res.body.data.is_borrowed).toEqual(true);
     // })
 
-    test('book should be borrowed if available',async()=>{
-        const res = await request(app).put('/borrow/1'); // Assuming book ID 1
+    test('should mark a book as returned', async () => {
+        const res = await request(app).put('/return/1'); // Assuming book ID 1
         expect(res.statusCode).toEqual(200);
-        expect(res.body.data.is_borrowed).toEqual(true);
-    })
+        expect(res.body.data.is_borrowed).toEqual(false);  // Check if 'is_borrowed' is false
+    });
+
 
 })
